@@ -1,0 +1,45 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* python
+
+```python
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        #dp[i] 为以i位置字符结尾的无重复字符串的长度
+        #sen[i] 为以i位置字符结尾的无重复字符串
+        #dp[i] if s[i] not in sen[i-1]:dp[i] += 1; sen[i] = sen[i-1]+s[i]
+        #      else:遍历sen[i-1],找到s[i]的位置，根据字符串长度，更新sen[i],与更新dp[i]
+
+        if len(s) == 0:
+            return 0
+
+        dp = [1 for _ in range(len(s) + 1)]
+        sen = [str(ss) for ss in s]
+        res = 1
+        #print dp, sen
+
+        for i in range(1, len(s)):
+            if s[i] not in sen[i-1]:
+                dp[i] = dp[i-1] + 1
+                sen[i] = sen[i-1] + s[i]
+            else:
+                index = sen[i-1].index(s[i])
+                sen[i] = sen[i-1][index+1:]+s[i]
+                dp[i] = len(sen[i-1]) - index
+            if dp[i] > res:
+                res = dp[i]
+
+        return res
+
+        
+        
+```
+
