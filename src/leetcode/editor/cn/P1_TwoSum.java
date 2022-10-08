@@ -59,6 +59,7 @@ public class P1_TwoSum{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        System.out.println("222");
         return new int[3];
     }
 }
