@@ -52,6 +52,7 @@ public class P3_LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         Solution solution = new P3_LongestSubstringWithoutRepeatingCharacters().new Solution();
         String s = "pwwkew";
+        System.out.println("================");
         System.out.println(solution.lengthOfLongestSubstring(s));
     }
 
