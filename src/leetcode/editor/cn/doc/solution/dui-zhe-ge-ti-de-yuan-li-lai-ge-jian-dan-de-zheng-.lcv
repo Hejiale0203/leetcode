@@ -1,0 +1,44 @@
+这个问题说白了，就是寻找`pMin`，`pMax`，满足如下条件：
+`pMin`的位置在`pMax`左边：`pMin<pMax`
+令插值最大：`nums[pMin]-nums[pMax]`
+
+结合一个实例分析：`Nums =[0,10,3,6,-5,-3,-10]`
+
+![image.png](https://pic.leetcode-cn.com/ec181180234d6d3508935230b3c25fb02d34941ba3ee81f8d3669602146992be-image.png)
+
+从左向右一次遍历过程中：
+首先，`nums[0]=0`为第一个最小值，`nums[4]=-5`为第二个最小值
+我们从`nums[4]`将这个示例分成两部分，即`nums[0-3]`和`nums[4-6]`
+
+对左边`nums[0-3]`来说，
+`nums[4]`在该范围右边，因此不能使用`nums[4]`,只考虑本部分即可。
+这个范围内可用的最小值就是分割点`nums[0]`，
+该段内最大差值是该范围内最大值减去`nums[0]`。
+
+对右边`nums[4-6]`来说，
+由于：`num[0]>nums[4]`
+`nums[i]-nums[0]<nums[i]-nums[4]`
+因此该范围内只会使用`nums[4]`作为最小值，不会使用`num[0]`，不用考虑左边。
+该段内最大差值是该范围内最大值减去`nums[4]`。
+
+以此类推，我们只要将数据，根据从左向右遍历过程中出现的每个最小值依次分割，分成若干段，然后寻找每段的最大值，与该段最小值（分割点）做差就是该段中出现的最大差值。所有段中的最大值就是我们要找的答案。
+代码如下：
+
+* c#
+
+```c#
+public class Solution
+{
+    public int MaxProfit(int[] prices)
+    {
+        int min = int.MaxValue, max = 0;
+        for (int i = 0; i < prices.Length; i++)
+        {
+            if (prices[i] < min) min = prices[i];
+            if (prices[i] - min > max) max = prices[i] - min;
+        }
+        return max;
+    }
+}
+```
+
