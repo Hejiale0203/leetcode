@@ -45,7 +45,7 @@ import java.util.Arrays;
 /**
  * 寻找两个正序数组的中位数
  *
- * @author DY
+ * @author HJL
  * @date 2022-10-09 16:14:13
  */
 public class P4_MedianOfTwoSortedArrays {
