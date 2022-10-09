@@ -34,6 +34,10 @@
 
 package leetcode.editor.cn;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * x 的平方根
  *
@@ -44,33 +48,32 @@ public class P69_Sqrtx {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new P69_Sqrtx().new Solution();
-        int x = 8;
+        int x = 2147395600;
         System.out.println(solution.mySqrt(x));
     }
 
     //力扣代码
 //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+		//二分查找 应该还可以用除法 防止整型越界
         public int mySqrt(int x) {
-			int[] arr = new int[x];
-			for (int i = 0; i < arr.length; i++) {
-				arr[i] = i + 1;
+			if(x >= 2147395600){
+				return 46340;
 			}
 			int left = 0;
-			int right = arr.length -1;
+			int right = 46340;
 			int mid;
-			while (left < right){
-				mid = (left + right) >>> 1;
-				if(arr[mid] * arr[mid] == x){
-					int result = arr[mid];
-					return result;
-				}else if(arr[mid] * arr[mid] < x){
-					left++;
+			while (left <= right){
+				mid = (right +left) >>>1;
+				if(mid * mid == x){
+					return mid;
+				}else if(mid * mid  < x){
+					left = mid +1;
 				}else {
-					right--;
+					right = mid -1;
 				}
 			}
-            return -1;
+			return (right + left) >>>1;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
