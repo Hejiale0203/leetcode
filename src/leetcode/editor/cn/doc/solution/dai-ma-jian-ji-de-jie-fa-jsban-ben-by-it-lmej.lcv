@@ -1,0 +1,21 @@
+[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      
+[刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)
+遍历计算前N项和，存入缓存数组，i到j项和即为：前j+1项和减去前i项和，注意第1项为0。
+
+* 
+
+```
+var NumArray = function(nums) {
+    this.sums = [0];
+    for (var n = 0; n < nums.length; n++) {
+        this.sums.push(this.sums[n] + nums[n]);
+    }
+};
+
+NumArray.prototype.sumRange = function(i, j) {
+    return this.sums[j+1] - this.sums[i];
+};
+
+
+```
+
