@@ -41,4 +41,4 @@
  <li><code>2 &lt;= S.length &lt;= 50</code></li> 
 </ol>
 
-<div><div>Related Topics</div><div><li>栈</li><li>字符串</li></div></div><br><div><li>👍 426</li><li>👎 0</li></div>
+<div><div>Related Topics</div><div><li>栈</li><li>字符串</li></div></div><br><div><li>👍 406</li><li>👎 0</li></div>

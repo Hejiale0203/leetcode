@@ -47,8 +47,8 @@ public class P74_SearchA2dMatrix {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new P74_SearchA2dMatrix().new Solution();
-        int[][] matrix = {{-9,-8},{-5,-3},{-1,1},{4,4}};
-        int target = -15;
+        int[][] matrix = {{1,3,5,7},{10,11,16,20},{23,30,34,60}};
+        int target = 13;
         System.out.println(solution.searchMatrix(matrix, target));
     }
 
@@ -78,17 +78,17 @@ public class P74_SearchA2dMatrix {
                     return true;
                 }
                 if (ints[matrix[0].length - 1] > target) {
-                    int left = 0;
-                    int right = matrix[0].length;
+                    int left = -1;
+                    int right = matrix[0].length -1;
                     int mid;
-                    while (left < right) {
+                    while (left < right - 1) {
                         mid = (left + right) / 2;
                         if (ints[mid] == target) {
                             return true;
                         } else if (ints[mid] > target) {
-                            right--;
+                            right = mid;
                         } else {
-                            left++;
+                            left = mid;
                         }
                     }
                     return false;
