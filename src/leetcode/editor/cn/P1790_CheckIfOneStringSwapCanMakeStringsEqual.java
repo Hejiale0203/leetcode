@@ -96,7 +96,7 @@ public class P1790_CheckIfOneStringSwapCanMakeStringsEqual {
             char ans = arr[firstIndex];
             arr[firstIndex] = arr[secondIndex];
             arr[secondIndex] = ans;
-            return Arrays.equals(arr,s1.toCharArray());
+            return Arrays.equals(arr, s1.toCharArray());
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
